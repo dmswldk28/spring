@@ -17,14 +17,17 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "orders")
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
-
+ 
 	@Id	@GeneratedValue
 	@Column(name = "order_id")
 	private Long id;
@@ -94,5 +97,9 @@ public class Order {
 			totalPrice += orderItem.getTotalPrice();
 		}
 		return totalPrice;
+		
+//		return orderItems.stream()
+//				.mapToInt(OrderItem::getTotalPrice)
+//				.sum();
 	}
 }
