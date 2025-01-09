@@ -31,6 +31,10 @@ public class OrderRepository {
 	public Order findOne(Long id) {
 		return em.find(Order.class, id);
 	}
+	
+//	public List<Order> findAll(OrderSearch orderSearch) {
+//		//... 검색 로직
+//	}
 
 	public List<Order> findAllByString(OrderSearch orderSearch) {
 		// language=JPAQL
